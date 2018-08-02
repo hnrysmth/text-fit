@@ -5,18 +5,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const originalWidth = output.clientWidth;
 
-  const copyInput = () => output.textContent = input.value;
+  const updateOutputText = () => {
+    output.textContent = input.value;
+  };
 
-  const updateSize = () => {
+  const updateOutputWidth = () => {
     const sizeMultiplier = slider.value / 100;
     const newWidth = originalWidth * sizeMultiplier;
     output.style.width = `${newWidth}px`;
   };
 
-  input.addEventListener('keyup', copyInput);
-  slider.addEventListener('input', updateSize);
+  const updateOutputFontSize = () => {
+    const style = getComputedStyle(output);
+    let fontSize = 1;
 
-  copyInput();
+    for (let i = 1; i <= 900; i++) {
+      fontSize = i;
+      output.style.fontSize = `${fontSize}px`;
+
+      const hasBurstHorizontally = output.scrollWidth > output.clientWidth;
+      const hasBurstVertically = output.scrollHeight > output.clientHeight;
+
+      if (hasBurstHorizontally || hasBurstVertically) {
+        fontSize -= 1;
+        output.style.fontSize = `${fontSize}px`;
+        break;
+      }
+    }
+  };
+
+  input.addEventListener('keyup', () => {
+    updateOutputText();
+    updateOutputFontSize();
+  });
+
+  slider.addEventListener('input', () => {
+    updateOutputWidth();
+    updateOutputFontSize();
+  });
+
+  updateOutputText();
+  updateOutputFontSize();
 
   console.log('go!', input, slider, output);
 });

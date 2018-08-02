@@ -10,7 +10,7 @@ body {
 .page {
   display: flex;
   flex-direction: column;
-  width: 20em;
+  width: 320px;
   max-width: 90vw;
 }
 
@@ -25,4 +25,11 @@ body {
 
 .output {
   background: #EEEEEE;
+  font-size: 16px;
+  height: 128px;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
