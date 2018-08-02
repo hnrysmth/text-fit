@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   input.addEventListener('keyup', copyInput);
-  slider.addEventListener('change', updateSize);
+  slider.addEventListener('input', updateSize);
 
   copyInput();
 
