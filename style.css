@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 20em;
+  max-width: 90vw;
+}
+
+.input, .output {
+  font-size: 16px;
+  padding: 8px;
+}
+
+.slider {
+  margin: 32px 0;
+}
