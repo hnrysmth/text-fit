@@ -3,7 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const slider = document.querySelector('.slider');
   const output = document.querySelector('.output');
 
-  const originalWidth = output.clientWidth;
+  const inputBackup = localStorage.getItem('input');
+  const sliderBackup = localStorage.getItem('slider');
+
+  input.value = inputBackup || 'words words words words words';
+  slider.value = sliderBackup || 100;
 
   const updateOutputText = () => {
     output.textContent = input.value;
@@ -11,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const updateOutputWidth = () => {
     const sizeMultiplier = slider.value / 100;
-    const newWidth = originalWidth * sizeMultiplier;
+    const newWidth = input.clientWidth * sizeMultiplier;
     output.style.width = `${newWidth}px`;
   };
 
@@ -37,15 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
   input.addEventListener('keyup', () => {
     updateOutputText();
     updateOutputFontSize();
+    localStorage.setItem('input', input.value);
   });
 
   slider.addEventListener('input', () => {
     updateOutputWidth();
     updateOutputFontSize();
+    localStorage.setItem('slider', slider.value);
   });
 
   updateOutputText();
+  updateOutputWidth();
   updateOutputFontSize();
-
-  console.log('go!', input, slider, output);
 });

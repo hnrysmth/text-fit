@@ -10,13 +10,17 @@ body {
 .page {
   display: flex;
   flex-direction: column;
-  width: 320px;
-  max-width: 90vw;
+  align-items: center;
 }
 
 .input, .output {
   font-size: 16px;
   padding: 8px;
+}
+
+.input, .slider {
+  width: 320px;
+  max-width: 90vw;
 }
 
 .slider {
