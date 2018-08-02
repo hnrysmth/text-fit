@@ -4,6 +4,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: sans-serif;
 }
 
 .page {
@@ -20,4 +21,8 @@ body {
 
 .slider {
   margin: 32px 0;
+}
+
+.output {
+  background: #EEEEEE;
 }
